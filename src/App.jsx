@@ -4,7 +4,7 @@ import Routes from "./Routes"
 import { UserContextProvider } from "./UserContext"
 
 function App() {
-  axios.defaults.baseURL = "https://chat-app-m9zj.onrender.com"
+  axios.defaults.baseURL = "https://chat-app-api-uie4.onrender.com"
   axios.defaults.withCredentials = true
   return (
     <UserContextProvider>
