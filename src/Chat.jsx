@@ -19,7 +19,7 @@ export default function Chat() {
     connectToWs()
   }, [selectedUserId])
   function connectToWs() {
-    const ws = new WebSocket("https://chat-app-client-nu.vercel.app")
+    const ws = new WebSocket("wss://chat-app-client-nu.vercel.app")
     setWs(ws)
     ws.addEventListener("message", handleMessage)
     ws.addEventListener("close", () => {
