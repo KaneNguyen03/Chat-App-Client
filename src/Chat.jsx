@@ -1,5 +1,4 @@
 import { useContext, useEffect, useRef, useState } from "react"
-import Avatar from "./Avatar"
 import Logo from "./Logo"
 import { UserContext } from "./UserContext.jsx"
 import { uniqBy } from "lodash"
@@ -38,7 +37,6 @@ export default function Chat() {
   }
   function handleMessage(ev) {
     const messageData = JSON.parse(ev.data)
-    console.log({ ev, messageData })
     if ("online" in messageData) {
       showOnlinePeople(messageData.online)
     } else if ("text" in messageData) {
@@ -126,7 +124,7 @@ export default function Chat() {
 
   return (
     <div className="flex h-screen">
-      <div className="bg-white w-1/3 flex flex-col">
+      <div className="bg-white w-1/3 flex flex-col overflow-scroll overflow-x-hidden">
         <div className="flex-grow">
           <Logo />
           {Object.keys(onlinePeopleExclOurUser).map((userId) => (
