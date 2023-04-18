@@ -19,7 +19,6 @@ export default function Chat() {
     connectToWs()
   }, [selectedUserId])
   function connectToWs() {
-    // const ws = new WebSocket("ws://localhost:4001")
     const ws = new WebSocket("wss://chat-app-api-uie4.onrender.com")
     setWs(ws)
     ws.addEventListener("message", handleMessage)
