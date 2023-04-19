@@ -1,5 +1,4 @@
 import { useContext, useEffect, useRef, useState } from "react"
-import Avatar from "./Avatar"
 import Logo from "./Logo"
 import { UserContext } from "./UserContext.jsx"
 import { uniqBy } from "lodash"
@@ -18,7 +17,10 @@ export default function Chat() {
   useEffect(() => {
     connectToWs()
   }, [selectedUserId])
-  function connectToWs() {
+
+  useEffect(() => {})
+
+  const connectToWs = () => {
     const ws = new WebSocket("wss://chat-app-api-uie4.onrender.com")
     setWs(ws)
     ws.addEventListener("message", handleMessage)
@@ -38,7 +40,6 @@ export default function Chat() {
   }
   function handleMessage(ev) {
     const messageData = JSON.parse(ev.data)
-    console.log({ ev, messageData })
     if ("online" in messageData) {
       showOnlinePeople(messageData.online)
     } else if ("text" in messageData) {
@@ -126,7 +127,29 @@ export default function Chat() {
 
   return (
     <div className="flex h-screen">
-      <div className="bg-white w-1/3 flex flex-col">
+      <button
+        className="absolute top-2 left-2 w-1/12"
+        onClick={() => document.getElementById()}
+      >
+        <svg
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            clipRule="evenodd"
+            fillRule="evenodd"
+            d="M10.21 14.77a.75.75 0 01.02-1.06L14.168 10 10.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+          />
+          <path
+            clipRule="evenodd"
+            fillRule="evenodd"
+            d="M4.21 14.77a.75.75 0 01.02-1.06L8.168 10 4.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+          />
+        </svg>
+      </button>
+      <div className="bg-white sm:flex  md:w-[50%] flex-col overflow-scroll overflow-x-hidden">
         <div className="flex-grow">
           <Logo />
           {Object.keys(onlinePeopleExclOurUser).map((userId) => (
@@ -152,31 +175,33 @@ export default function Chat() {
             />
           ))}
         </div>
-        <div className="p-2 text-center flex items-center justify-center">
-          <span className="mr-2 text-sm text-gray-600 flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="w-4 h-4"
+        <div className="fixed bottom-4 left-6">
+          <div className="p-2 text-center flex items-center justify-center">
+            <span className="mr-2 text-sm text-gray-600 flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-4 h-4"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              {username}
+            </span>
+            <button
+              onClick={logout}
+              className="text-sm bg-blue-100 py-1 px-2 text-gray-500 border rounded-sm"
             >
-              <path
-                fillRule="evenodd"
-                d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-                clipRule="evenodd"
-              />
-            </svg>
-            {username}
-          </span>
-          <button
-            onClick={logout}
-            className="text-sm bg-blue-100 py-1 px-2 text-gray-500 border rounded-sm"
-          >
-            logout
-          </button>
+              logout
+            </button>
+          </div>
         </div>
       </div>
-      <div className="flex flex-col bg-blue-50 w-2/3 p-2">
+      <div className="flex flex-col bg-blue-50 w-full p-2">
         <div className="flex-grow">
           {!selectedUserId && (
             <div className="flex h-full flex-grow items-center justify-center">
