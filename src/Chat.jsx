@@ -137,7 +137,6 @@ export default function Chat() {
               username={onlinePeopleExclOurUser[userId]}
               onClick={() => {
                 setSelectedUserId(userId)
-                console.log({ userId })
               }}
               selected={userId === selectedUserId}
             />
