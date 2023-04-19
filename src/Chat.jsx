@@ -123,11 +123,11 @@ export default function Chat() {
   const onlinePeopleExclOurUser = { ...onlinePeople }
   delete onlinePeopleExclOurUser[id]
 
-  const messagesWithoutDupes = uniqBy(messages, "_id")
+  const messagesWithoutDupes = uniqBy(  messages, "_id")
 
   return (
     <div className="flex h-screen">
-      <button
+      {/* <button
         className="absolute top-2 left-2 w-1/12"
         onClick={() => document.getElementById()}
       >
@@ -148,7 +148,7 @@ export default function Chat() {
             d="M4.21 14.77a.75.75 0 01.02-1.06L8.168 10 4.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
           />
         </svg>
-      </button>
+      </button> */}
       <div className="bg-white sm:flex  md:w-[50%] flex-col overflow-scroll overflow-x-hidden">
         <div className="flex-grow">
           <Logo />
