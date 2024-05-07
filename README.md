@@ -5,8 +5,8 @@
 
 * A project to demonstrate the real-time chat app
 
-###Demo
-#You can visit the live version of the chat application at https://chat-app-client-nu.vercel.app/.
+### Demo
+# You can visit the live version of the chat application at https://chat-app-client-nu.vercel.app/.
 
 Demo Accounts
 User 1: Username: user1 | Password: 123
