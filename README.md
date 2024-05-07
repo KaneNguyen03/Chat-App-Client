@@ -1,5 +1,5 @@
 
-###  Welcome to Chat App Repository 
+##  Welcome to Chat App Repository 
 
 #### You will find in this repo the following stuff:
 
@@ -11,7 +11,8 @@
 ### Demo Accounts
 * User 1: Username: user1 | Password: 123
 * User 2: Username: user2 | Password: 123
-Feel free to log in with one of the demo accounts to explore the chat application.
+
+#### Feel free to log in with one of the demo accounts to explore the chat application.
   
 ![image](https://github.com/KaneNguyen03/Chat-App-Client/assets/110075093/9b8724ea-5f1b-4c3d-a3fb-9567cf1370b4)
 
